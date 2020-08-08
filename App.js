@@ -1,21 +1,43 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from "react";
+import { AppLoading } from "expo";
+import { Image } from "react-native";
+import { Asset } from "expo-asset";
+import { Ionicons } from "@expo/vector-icons";
+import * as Font from "expo-font";
+import { NavigationContainer } from "@react-navigation/native";
+import Stack from "./navigation/Stack";
+
+const cacheImages = (images) =>
+  images.map((image) => {
+    if (typeof image === "string") {
+      return Image.prefetch(image);
+    } else {
+      return Asset.fromModule(image).downloadAsync();
+    }
+  });
+const cacheFonts = (fonts) =>
+  fonts.map((font) => [Font.loadAsync(font), Font.loadAsync(font)]);
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+  const [isReady, setIsReady] = useState(false);
+  const loadAssets = async () => {
+    const images = cacheImages([
+      "http://10000img.com/view/rimg1/ani04.jpg",
+      require("./assets/splash.png"),
+    ]);
+    const fonts = cacheFonts([Ionicons.font]);
+    return await Promise.all([...images, ...fonts]);
+  };
+  const onFinish = () => setIsReady(true);
+  return isReady ? (
+    <NavigationContainer>
+      <Stack />
+    </NavigationContainer>
+  ) : (
+    <AppLoading
+      startAsync={loadAssets}
+      onFinish={onFinish}
+      onError={console.error}
+    />
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
