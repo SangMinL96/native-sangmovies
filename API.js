@@ -27,5 +27,11 @@ export const movieApi = {
   movie: (id) => onApiData(`/movie/${id}`),
   discover: () => onApiData("/discover/movie"),
 };
-
-export const tvApi = {};
+export const tvApi = {
+  today: () => onApiData("/tv/airing_today"),
+  thisweek: () => onApiData("/tv/on_the_air"),
+  topRated: () => onApiData("/tv/top_rated"),
+  popular: () => onApiData("/tv/popular"),
+  search: (query) => onApiData("/search/tv", { query }),
+  show: (id) => onApiData(`/tv/${id}`),
+};
