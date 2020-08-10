@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text } from "react-native";
+import { tvApi } from "../API";
 
 export default () => {
   const [tv, setTv] = useState({

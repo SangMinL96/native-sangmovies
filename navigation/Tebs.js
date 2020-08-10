@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Movies from "../screens/Movies";
 import Tv from "../screens/Tv";
 import Search from "../screens/Search";
-import discovery from "../screens/discovery";
+import Discovery from "../screens/Discovery";
 import { Ionicons } from "@expo/vector-icons";
 import { Platform } from "react-native";
 
@@ -29,11 +29,11 @@ export default ({ navigation, route }) => {
           let iconName = Platform.OS === "ios" ? "ios-" : "md-";
           if (route.name === "Movies") {
             iconName += "film";
-          } else if (route.name === "TV") {
+          } else if (route.name === "Tv") {
             iconName += "tv";
           } else if (route.name === "Search") {
             iconName += "search";
-          } else if (route.name === "heart") {
+          } else if (route.name === "Discovery") {
             iconName += "heart";
           }
           return (
@@ -49,7 +49,7 @@ export default ({ navigation, route }) => {
       <Teps.Screen name="Movies" component={Movies} />
       <Teps.Screen name="Tv" component={Tv} />
       <Teps.Screen name="Search" component={Search} />
-      <Teps.Screen name="discovery" component={discovery} />
+      <Teps.Screen name="Discovery" component={Discovery} />
     </Teps.Navigator>
   );
 };
