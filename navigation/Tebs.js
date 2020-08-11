@@ -47,7 +47,7 @@ export default ({ navigation, route }) => {
         },
       })}
     >
-      <Teps.Screen name="MoviesContainer" component={MoviesContainer} />
+      <Teps.Screen name="Movies" component={MoviesContainer} />
       <Teps.Screen name="Tv" component={Tv} />
       <Teps.Screen name="Search" component={Search} />
       <Teps.Screen name="Discovery" component={Discovery} />

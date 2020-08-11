@@ -31,6 +31,6 @@ export default () => {
   useEffect(() => {
     getData();
   }, []);
-  console.log(movies.nowPlaying);
+
   return <MoviesPresenter {...movies} />;
 };
