@@ -1,9 +1,10 @@
-import React from "react";
-import { View, Text } from "react-native";
-import { tvApi } from "../API";
+import React, { useState, useEffect } from "react";
+import { tvApi } from "../../API";
+import TvContainer from "./TvContainer";
 
 export default () => {
   const [tv, setTv] = useState({
+    loading: true,
     today: [],
     todayError: null,
     thisWeek: [],
@@ -15,11 +16,12 @@ export default () => {
   });
 
   const getData = async () => {
-    const [today, todayError] = await tvApi.nowPlaying();
-    const [thisWeek, thisWeekError] = await tvApi.nowPlaying();
-    const [topRated, topRatedError] = await tvApi.nowPlaying();
-    const [popular, popularError] = await tvApi.nowPlaying();
-    setMovies({
+    const [today, todayError] = await tvApi.today();
+    const [thisWeek, thisWeekError] = await tvApi.thisweek();
+    const [topRated, topRatedError] = await tvApi.topRated();
+    const [popular, popularError] = await tvApi.popular();
+    setTv({
+      loading: false,
       today,
       todayError,
       thisWeek,
@@ -33,9 +35,5 @@ export default () => {
   useEffect(() => {
     getData();
   }, []);
-  return (
-    <View>
-      <Text>Tv</Text>
-    </View>
-  );
+  return <TvContainer {...tv} />;
 };

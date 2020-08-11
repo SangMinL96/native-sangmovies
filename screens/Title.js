@@ -6,7 +6,7 @@ const Text = styled.Text`
   color: white;
   font-weight: bold;
   font-size: 16px;
-  margin-top: 40px;
+
   margin-left: 10px;
 `;
 
