@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-
-import Search from "../screens/Search";
 import Discovery from "../screens/Discovery";
 import { Ionicons } from "@expo/vector-icons";
 import { Platform } from "react-native";
 import MoviesContainer from "../screens/Movie/MoviesContainer";
 import Tv from "../screens/TV/Tv";
+import Search from "../screens/SearchDir/Search";
 
 const Teps = createBottomTabNavigator();
 
@@ -47,8 +46,8 @@ export default ({ navigation, route }) => {
         },
       })}
     >
-      <Teps.Screen name="TV" component={Tv} />
       <Teps.Screen name="Movies" component={MoviesContainer} />
+      <Teps.Screen name="TV" component={Tv} />
       <Teps.Screen name="Search" component={Search} />
       <Teps.Screen name="Discovery" component={Discovery} />
     </Teps.Navigator>
