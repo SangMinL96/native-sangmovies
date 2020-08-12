@@ -17,8 +17,8 @@ const PopularContainer = styled.View`
 const TopRatedContainer = styled.View`
   margin-top: 40px;
 `;
-export default ({ loading, today, thisWeek, topRated, popular }) => (
-  <Scroll loading={loading}>
+export default ({ refreshFn, loading, today, thisWeek, topRated, popular }) => (
+  <Scroll loading={loading} refreshFn={refreshFn}>
     <TodayContainer>
       <Title title={"Today"} />
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>

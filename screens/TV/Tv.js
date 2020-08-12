@@ -35,5 +35,5 @@ export default () => {
   useEffect(() => {
     getData();
   }, []);
-  return <TvContainer {...tv} />;
+  return <TvContainer refreshFn={getData} {...tv} />;
 };

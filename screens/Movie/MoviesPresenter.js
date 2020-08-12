@@ -1,5 +1,5 @@
 import React from "react";
-import { Dimensions, ActivityIndicator, ScrollView } from "react-native";
+import { Dimensions, ScrollView } from "react-native";
 import styled from "styled-components/native";
 import Swiper from "react-native-web-swiper";
 import Slider from "./Slider";
@@ -21,11 +21,11 @@ const UpComingContainer = styled.View`
   margin-top: 40px;
 `;
 
-export default ({ loading, nowPlaying, popular, upcoming }) => (
-  <Scroll loading={loading}>
+export default ({ refreshFn, loading, nowPlaying, popular, upcoming }) => (
+  <Scroll loading={loading} refreshFn={refreshFn}>
     <>
       <SliderContainer>
-        <Swiper controlsEnabled={false} loop timeout={3}>
+        <Swiper controlsEnabled={false} loop timeout={10}>
           {nowPlaying?.results?.map((movie) => (
             <Slider
               key={movie.id}

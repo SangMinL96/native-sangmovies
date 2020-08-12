@@ -5,8 +5,8 @@ const APIKEY = "cc3aed3fa1f0feef67c25879a942c3db";
 const getData = (path, params) =>
   axios.get(`https://api.themoviedb.org/3${path}`, {
     params: {
-      ...params,
       api_key: APIKEY,
+      ...params,
     },
   });
 
