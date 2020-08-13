@@ -25,7 +25,7 @@ export const movieApi = {
   upcoming: () => onApiData("/movie/upcoming", { region: "kr" }),
   search: (query) => onApiData("/search/movie", { query }),
   movie: (id) => onApiData(`/movie/${id}`),
-  discover: () => onApiData("/discover/movie"),
+  discovery: () => onApiData("/discover/movie"),
 };
 export const tvApi = {
   today: () => onApiData("/tv/airing_today"),
@@ -35,4 +35,16 @@ export const tvApi = {
   search: (query) => onApiData("/search/tv", { query }),
   show: (id) => onApiData(`/tv/${id}`),
 };
-export const getImage = (path) => `https://image.tmdb.org/t/p/w500${path}`;
+export const getImage = (path) =>
+  path
+    ? `https://image.tmdb.org/t/p/w500${path}`
+    : "http://memorymaker.co.kr/plugin/wz.booking.pension.prm/img/noimage.gif";
+
+export const getDate = (date) => {
+  const theDate = new Date(date);
+  return theDate.toLocaleDateString("ko-kr", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+};

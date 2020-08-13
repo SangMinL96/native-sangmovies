@@ -29,6 +29,9 @@ export default ({ refreshFn, loading, today, thisWeek, topRated, popular }) => (
             name={item.name}
             votes={item.vote_average}
             poster={item.poster_path}
+            backgroundImage={item.backdrop_path}
+            overview={item.overview}
+            release={item.release_date}
           />
         ))}
       </ScrollView>
@@ -43,6 +46,9 @@ export default ({ refreshFn, loading, today, thisWeek, topRated, popular }) => (
             name={item.name}
             votes={item.vote_average}
             poster={item.poster_path}
+            backgroundImage={item.backdrop_path}
+            overview={item.overview}
+            release={item.release_date}
           />
         ))}
       </ScrollView>
@@ -57,6 +63,9 @@ export default ({ refreshFn, loading, today, thisWeek, topRated, popular }) => (
             name={item.name}
             votes={item.vote_average}
             poster={item.poster_path}
+            backgroundImage={item.backdrop_path}
+            overview={item.overview}
+            release={item.release_date}
           />
         ))}
       </ScrollView>
@@ -71,6 +80,9 @@ export default ({ refreshFn, loading, today, thisWeek, topRated, popular }) => (
           votes={item.vote_average}
           poster={item.poster_path}
           overview={item.overview}
+          backgroundImage={item.backdrop_path}
+          overview={item.overview}
+          release={item.release_date}
         />
       ))}
     </TopRatedContainer>

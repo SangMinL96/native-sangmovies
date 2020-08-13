@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { getImage } from "../../API";
 import { TouchableOpacity } from "react-native";
 import Votes from "../Votes";
+import OnPress from "../OnPress";
 
 const Container = styled.View`
   width: 100%;
@@ -54,7 +55,15 @@ const ButtonText = styled.Text`
   font-size: 10px;
   font-weight: bold;
 `;
-const Slider = ({ id, title, backgroundImage, votes, overview, poster }) => (
+const Slider = ({
+  id,
+  title,
+  backgroundImage,
+  release,
+  votes,
+  overview,
+  poster,
+}) => (
   <Container>
     <BG resizeMode="cover" source={{ uri: getImage(backgroundImage) }} />
     <SliderContents>
@@ -63,11 +72,19 @@ const Slider = ({ id, title, backgroundImage, votes, overview, poster }) => (
         <Title>{title.length > 15 ? `${title.slice(0, 15)}...` : title}</Title>
         <Votes votes={votes} />
         <OverView>{overview.slice(0, 80)}...</OverView>
-        <TouchableOpacity>
+        <OnPress
+          id={id}
+          title={title}
+          votes={votes}
+          poster={poster}
+          overview={overview}
+          backgroundImage={backgroundImage}
+          release={release}
+        >
           <Button>
             <ButtonText>See Details</ButtonText>
           </Button>
-        </TouchableOpacity>
+        </OnPress>
       </Data>
     </SliderContents>
   </Container>
@@ -80,6 +97,8 @@ Slider.propTypes = {
   title: PropTypes.string.isRequired,
   backgroundImage: PropTypes.string.isRequired,
   votes: PropTypes.number.isRequired,
+  backgroundImage: PropTypes.string.isRequired,
   overview: PropTypes.string.isRequired,
+  release: PropTypes.number.isRequired,
 };
 export default Slider;

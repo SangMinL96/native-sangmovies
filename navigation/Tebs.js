@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Discovery from "../screens/Discovery";
+
 import { Ionicons } from "@expo/vector-icons";
 import { Platform } from "react-native";
 import MoviesContainer from "../screens/Movie/MoviesContainer";
 import Tv from "../screens/TV/Tv";
 import Search from "../screens/SearchDir/Search";
+import Discovery from "../screens/discoveryDir/Discovery";
 
 const Teps = createBottomTabNavigator();
 

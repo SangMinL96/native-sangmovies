@@ -35,6 +35,8 @@ export default ({ refreshFn, loading, nowPlaying, popular, upcoming }) => (
               votes={movie.vote_average}
               backgroundImage={movie.backdrop_path}
               poster={movie.poster_path}
+              overview={movie.overview}
+              release={movie.release_date}
             />
           ))}
         </Swiper>
@@ -49,6 +51,9 @@ export default ({ refreshFn, loading, nowPlaying, popular, upcoming }) => (
               title={movie.title}
               votes={movie.vote_average}
               poster={movie.poster_path}
+              backgroundImage={movie.backdrop_path}
+              overview={movie.overview}
+              release={movie.release_date}
             />
           ))}
         </ScrollView>
@@ -63,6 +68,8 @@ export default ({ refreshFn, loading, nowPlaying, popular, upcoming }) => (
             votes={movie.vote_average}
             poster={movie.poster_path}
             overview={movie.overview}
+            backgroundImage={movie.backdrop_path}
+            release={movie.release_date}
           />
         ))}
       </UpComingContainer>

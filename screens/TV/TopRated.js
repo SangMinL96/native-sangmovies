@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { getImage } from "../../API";
 import { TouchableOpacity } from "react-native";
 import Votes from "../Votes";
+import OnPress from "../OnPress";
 const Container = styled.View`
   margin-left: 10px;
   margin-top: 20px;
@@ -32,9 +33,25 @@ const Overview = styled.Text`
   color: gray;
 `;
 
-function TopRated({ name, votes, poster, overview }) {
+function TopRated({
+  id,
+  release,
+  name,
+  votes,
+  poster,
+  overview,
+  backgroundImage,
+}) {
   return (
-    <TouchableOpacity>
+    <OnPress
+      id={id}
+      name={name}
+      votes={votes}
+      poster={poster}
+      backgroundImage={backgroundImage}
+      overview={overview}
+      release={release}
+    >
       <Container>
         <Datas>
           <Poster resizeMode="cover" source={{ uri: getImage(poster) }} />
@@ -47,15 +64,17 @@ function TopRated({ name, votes, poster, overview }) {
           </Contents>
         </Datas>
       </Container>
-    </TouchableOpacity>
+    </OnPress>
   );
 }
 
 TopRated.prototype = {
   id: PropTypes.number.isRequired,
-  title: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   votes: PropTypes.number.isRequired,
   poster: PropTypes.string.isRequired,
+  backgroundImage: PropTypes.string.isRequired,
   overview: PropTypes.string.isRequired,
+  release: PropTypes.number.isRequired,
 };
 export default TopRated;

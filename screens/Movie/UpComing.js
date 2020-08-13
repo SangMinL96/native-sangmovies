@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { getImage } from "../../API";
 import { TouchableOpacity } from "react-native";
 import Votes from "../Votes";
+import OnPress from "../OnPress";
 const Container = styled.View`
   margin-left: 10px;
   margin-top: 20px;
@@ -32,9 +33,25 @@ const Overview = styled.Text`
   color: gray;
 `;
 
-function UpComing({ title, votes, poster, overview }) {
+function UpComing({
+  id,
+  title,
+  votes,
+  poster,
+  overview,
+  release,
+  backgroundImage,
+}) {
   return (
-    <TouchableOpacity>
+    <OnPress
+      id={id}
+      title={title}
+      votes={votes}
+      poster={poster}
+      overview={overview}
+      backgroundImage={backgroundImage}
+      release={release}
+    >
       <Container>
         <Datas>
           <Poster resizeMode="cover" source={{ uri: getImage(poster) }} />
@@ -49,7 +66,7 @@ function UpComing({ title, votes, poster, overview }) {
           </Contents>
         </Datas>
       </Container>
-    </TouchableOpacity>
+    </OnPress>
   );
 }
 
@@ -58,6 +75,8 @@ UpComing.prototype = {
   title: PropTypes.string.isRequired,
   votes: PropTypes.number.isRequired,
   poster: PropTypes.string.isRequired,
+  backgroundImage: PropTypes.string.isRequired,
   overview: PropTypes.string.isRequired,
+  release: PropTypes.number.isRequired,
 };
 export default UpComing;
